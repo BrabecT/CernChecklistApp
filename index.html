@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CHECKLIST</title>
+        <!-- Bootstrap -->
+        <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="vendor/components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Angular bootstrap -->
+        <link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet">
+        <!-- Angular material -->
+        <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet">
+        <link href="node_modules/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
+        <!-- Application CSS -->
+        <link href="build/css/custom.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" href="#" />
+    </head>
+
+    <body ng-app="checklistApp" layout="column" ng-controller="indexDefaultController" ng-cloak>
+        <section layout="row" flex>
+            <!-- Navigation panel -->
+            <md-sidenav class="md-sidenav-left"
+                    id="sidenav"
+                    md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-sm')"
+                    ng-show="adminVar"
+                    md-whiteframe="4">
+
+                <md-toolbar style="">
+                    <h1 class="md-toolbar-tools">Project COMPASS, CERN</h1>
+                </md-toolbar>
+                <!-- Navigation -->
+                <md-content layout="column" class="nav-content" ng-model="currentPage" layout-align="start start">
+                    <div ng-repeat="item in navItems" class="my-nav-item" ng-class="{my_active:isActive(item.name)}">
+                        <a class="md-button nav-link" ui-sref="{{item.name}}" ui-sref-opts="{reload: true}">
+                            <i class="{{item.icon}}"></i>
+                            <span class="nav-item-text">{{item.label}}</span>
+                        </a>
+                    </div>
+                </md-content>
+            </md-sidenav>
+
+
+            <!-- Body for content -->
+            <md-content flex layout-padding style="padding-top: 0; overflow-y: scroll;">
+                <div style="padding: 0; position: fixed; z-index: 10; bottom: auto; top: 7mm;">
+                    <!-- Toggle button for navigation panel -->
+                    <div>
+                        <md-button class="md-fab md-primary md-button md-ink-ripple"
+                                   aria-label="Open menu"
+                                   ng-click="toggleLeft()"
+                                   ng-show="adminVar"
+                                   hide-gt-sm
+                        >
+                            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                        </md-button>
+                    </div>
+                </div>
+
+
+                <div class="top_nav" style="min-width: 380px;">
+                    <div class="nav_menu nav_menu_login">
+                        <div class="login-name">
+                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Username:&nbsp;{{fullName}}
+                        </div>
+                        <div class="log-out" ">
+                            <a href="https://login.cern.ch/adfs/ls/?wa=wsignout1.0">
+                                <u>Log out</u>&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body" ui-view></div>
+            </md-content>
+        </section>
+
+
+
+
+        <!-- jQuery -->
+        <script src="vendor/components/jquery/jquery.min.js"></script>
+        <!--Angular-->
+        <script src="node_modules/angular/angular.min.js"></script>
+        <!-- UI-router -->
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <!--index Controller-->
+        <script src="indexController.js"></script>
+        <!--admin Controller-->
+        <script src="modules/admin/adminController.js"></script>
+        <!--user Controller-->
+        <script src="modules/user/userController.js"></script>
+        <!--services-->
+        <script src="services/getFormDataService.js"></script>
+        <script src="services/dialogService.js"></script>
+        <script src="services/authenticationService.js"></script>
+        <!-- Bootstrap -->
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Angular Bootstrap -->
+        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="build/js/custom.min.js"></script>
+        <!-- For ngMaterial -->
+        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+        <script src="node_modules/angular-touch/angular-touch.min.js"></script>
+        <script src=""></script>
+        <!-- ngMaterial -->
+        <script src="node_modules/angular-material/angular-material.min.js"></script>
+        <!-- Moment.js -->
+        <script src="node_modules/moment/moment.js"></script>
+        <script src="node_modules/angular-moment/angular-moment.js"></script>
+        <!-- Ladda Buttons -->
+        <script src="node_modules/ladda/dist/spin.min.js"></script>
+        <script src="node_modules/ladda/dist/ladda.min.js"></script>
+        <script src="node_modules/angular-ladda/dist/angular-ladda.min.js"></script>
+    </body>
+</html>

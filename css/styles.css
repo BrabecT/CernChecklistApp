@@ -1,0 +1,346 @@
+.login-name {
+    float: left;
+    padding-left: 3mm;
+    color: rgb(90, 115, 142);
+}
+
+.log-out {
+    float: right;
+    padding-right: 3mm;
+}
+
+.nav_menu_login {
+    margin-bottom: 0 !important;
+}
+
+
+/*
+===================================================================================
+USER PART
+===================================================================================
+*/
+.app-body {
+    color: rgba(0, 0, 0, 0.61);
+}
+
+table.user-form-tbl {
+    background-color: #ddd;
+    table-layout: fixed;
+    width: 100%;
+    border: 3px solid #12417e;
+}
+
+div.section-label {
+    background-color: #337ab7;
+    color: white;
+    border-top: 7px solid #337ab7;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 30px;
+    padding-left: 3mm;
+}
+
+div.user-section-content {
+    overflow: hidden;
+    text-align: justify;
+}
+
+div.user-section-content:last-child {
+    overflow: hidden;
+    text-align: justify;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+
+div.user-input-container {
+    border: 4px solid #337ab7;
+    margin-top: -5px;
+}
+
+div.user-input-text {
+    padding: 2mm;
+}
+
+.nav-content {
+    position: static;
+    background-color: #2b6cff;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.my-nav-item {
+    width: 100%;
+    text-align: left !important;
+    padding-left: 5mm;
+    border-top: 1px solid dodgerblue;
+}
+
+.my-nav-item:last-child {
+    border-bottom: 1px solid dodgerblue;
+}
+
+.nav-item-text {
+    color: white !important;
+   /* margin-left: 5mm;*/
+}
+
+.nav-icon {
+    width: 10mm;
+    color: white !important;
+}
+
+.my_active {
+    background-color: dodgerblue;
+}
+
+.nav-link {
+    width: 100%;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.user-mdCont{
+    margin-bottom: -20px !important;
+    margin-top: 10px !important;
+    vertical-align: bottom !important;
+    float: right !important;
+}
+
+.user-mdCont-checkbox{
+    margin-bottom: -10px !important;
+    margin-top: 10px !important;
+    vertical-align: bottom !important;
+    float: right !important;
+}
+
+.user-mdCont-textarea{
+    margin-bottom: -20px !important;
+    margin-top: 10px !important;
+    vertical-align: bottom !important;
+    float: right !important;
+    width: 100%;
+    padding-left: 2mm;
+    padding-right: 2mm;
+}
+
+.textarea-label{
+    margin-left: 2mm;
+}
+/*
+===================================================================================
+ADMIN PART
+===================================================================================
+*/
+
+table.admin-form-tbl {
+    background-color: #ddd;
+    table-layout: fixed;
+    width: 100%;
+    border: 3px solid #12417e;
+    min-width: 400px;
+    margin-bottom: 0;
+}
+
+div.admin-section-content {
+    overflow: hidden;
+    text-align: justify;
+}
+
+div.admin-input-container {
+    border: 4px solid #337ab7;
+    margin-top: -5px;
+}
+
+.admin-section-text{
+    padding: 5px 10px 5px 10px;
+}
+
+div.admin-inputctrl {
+    border-left: 2px solid #337ab7;
+    border-top: 2px solid #337ab7;
+    border-top-left-radius: 5px;
+    width: 30mm;
+    height: 7mm;
+    float: right;
+    padding-left: 1mm;
+}
+
+div.admin-inputctrl-wrap {
+    width: 100%;
+    margin-top: 0;
+    height: 7.5mm;
+}
+.admin-mdCont-checkbox{
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+    float: right;
+}
+
+.admin-mdCont{
+    margin-bottom: -20px !important;
+    margin-top: 10px !important;
+    vertical-align: bottom !important;
+    float: right;
+}
+.minmaxval {
+    float: left;
+    border-top: 2px solid #337ab7 !important;
+    border-right: 2px solid #337ab7 !important;
+    border-top-right-radius: 5px;
+    min-height: 7mm;
+    padding-left: 1mm;
+    padding-right: 1mm;
+    line-height: 4mm;
+}
+
+.btn-offlineLoad{
+    width: 200px;
+}
+
+.btn-getPdf{
+    width: 200px;
+}
+
+.btn-mySubmit{
+    width: 200px;
+}
+.md-sidenav-left {
+    overflow: hidden !important;
+
+}
+
+.content-user{
+    margin-top: 50px;
+}
+
+md-sidenav:not(.md-locked-open),
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 100px !important;
+    max-width: 250px !important;
+}
+
+.btn-add-input {
+    margin-bottom: 10px;
+    width: 15mm;
+    height: 7mm;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-add-section {
+    margin-bottom: 10px;
+    width: 30mm;
+    height: 10mm;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+md-input-container:not(.md-input-invalid) label {
+     color: rgba(0, 0, 0, 0.61);
+     font-size: 11pt;
+     font-weight: normal;
+}
+
+md-input-container:not(.md-input-invalid) label.datepicker-label {
+    color: rgba(0, 0, 0, 0.61) !important;
+    font-size: 15pt;
+    font-weight: normal;
+
+}
+
+md-input-container:not(.md-input-invalid) .md-input,
+md-datepicker,
+md-select {
+    border-color: rgba(0, 0, 0, 0.61);
+}
+
+md-select, .md-select-value, .md-select-placeholder {
+    color: black !important;
+    border-color: rgba(0, 0, 0, 0.61)!important;
+}
+
+.forms-table {
+    background-color: #ddd;
+    width: 100%;
+    border: 3px solid #12417e;
+    margin-bottom: 0;
+}
+
+.forms-table tr {
+    border-bottom: 3px solid #12417e !important;
+}
+
+.forms-table th {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+input.search-name {
+    width: 100%;
+    color: black;
+    padding-left: 1mm;
+}
+
+input.search-id {
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+.paginator {
+    text-align: center;
+}
+
+.subPage-nav {
+    background-color: rgb(237, 237, 237);
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.input {
+    padding-left: 2mm;
+    border-color: #177bff;
+}
+.number-error {
+    border-color: red !important;
+}
+.number-error-label{
+    color: red !important;
+}
+
+.printPdf-radio {
+    margin-right: 10mm;
+    display: inline-block;
+}
+
+.printPdf-date {
+    width: 30%;
+}
+
+.printPdf-shiftleader {
+    width: 30%;
+    min-width: 150px;
+    margin-right: 10%;
+}
+
+.success-msg {
+    font-size: 14pt;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid #337ab7;
+    border-radius: 10px;
+    background-color: #2b6cff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+

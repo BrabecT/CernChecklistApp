@@ -1,0 +1,145 @@
+<form>
+    <div class="center">
+        <h1>COMPASS Checklist {{date | date: 'yyyy'}}</h1>
+        <h4>To be performed once per shift approximately four hours after the shift start.</h4>
+        <h3>Date: <input type="text" style="width: 100px;" disabled="disabled">&nbsp;&nbsp;
+            Night: <input type="checkbox" style="transform: scale(2)" disabled="disabled">&nbsp;&nbsp;
+            Day: <input type="checkbox" style="transform: scale(2)" disabled="disabled">&nbsp;&nbsp;
+            Evening: <input type="checkbox" style="transform: scale(2)" disabled="disabled"><br />
+        </h3>
+        <h3>
+            Performed by: <input type="text" style="width: 355px;" disabled="disabled">
+        </h3>
+
+    </div>
+    <!-- Creating form -->
+    <table class="table-bordered table admin-form-tbl">
+        <thead>
+        <th class="col-sm-12 col-xs-2 bg-primary">
+            <h2><strong>Create form</strong></h2>
+        </th>
+
+        </thead>
+
+        <tbody>
+        <!-- Section repeat -->
+            <tr ng-repeat="section in sections">
+                <td>
+                    <!-- Section label if exists -->
+                    <div class="section-label" layout="row" layout-align="center center" flex
+                         ng-show="section.label != undefined || section.label != ''">
+
+                        <!-- Add section label -->
+                        <div style="width:5mm"  ng-show="section.label == undefined || section.label == ''">
+                            <i class="fa fa-lg fa-plus-circle" ng-click="addSectionLabel(section.index)"
+                               title="Add section label">
+                            </i>
+                        </div>
+
+                        <!-- Edit section label -->
+                        <div style="width:5mm;" ng-show="section.label != undefined && section.label != ''">
+                            <i class="fa fa-lg fa-pencil" ng-click="addSectionLabel(section.index)"
+                                title="Add section label">
+                            </i>
+                        </div>
+
+                        <!-- Section label text -->
+                        <div flex>
+                            <strong>{{section.label}}</strong>
+                        </div>
+
+                        <!-- Remove section -->
+                        <div style="width: 5mm; margin-right: 2mm;">
+                            <i class="fa fa-lg fa-minus-circle" ng-click="deleteSection(section.index)"
+                               title="Delete this section">
+                            </i>
+                        </div>
+                    </div>
+
+                    <!-- Inputs repeat -->
+                    <div ng-repeat="input in section.inputs track by $index" class="admin-section-content">
+                        <!-- Input type switch -->
+                        <div ng-if="input.inputType != ''" ng-switch="input.inputType" class="admin-input-container">
+                            <!-- Input label and text -->
+                            <div class="admin-section-text">
+                                <strong>{{input.inputLabel}}<span ng-if="input.inputLabel!=''">:</span></strong>&nbsp;&nbsp;{{input.inputText}}
+                            </div>
+
+                            <div layout="row" layout-align="center end">
+                                <!-- If input type = number, min and max value shows -->
+                                <div layout="row" layout-align="start center" class="minmaxval" ng-show="input.inputType == 'number'">
+                                    Min value: {{input.minValue}}<br />
+                                    Max value: {{input.maxValue}}
+                                </div>
+
+                                <div flex>
+                                    <!-- checkbox-->
+                                    <div ng-switch-when="checkbox">
+                                        <md-input-container class="admin-mdCont-checkbox">
+                                            <md-checkbox aria-label="Checkbox"></md-checkbox>
+                                        </md-input-container>
+                                    </div>
+                                    <!-- number-->
+                                    <div ng-switch-when="number">
+                                        <md-input-container class="admin-mdCont">
+                                            <label>Number</label>
+                                            <input aria-label="Number input" type="number">
+                                        </md-input-container>
+                                    </div>
+                                    <!-- text-->
+                                    <div ng-switch-when="text">
+                                        <md-input-container class="admin-mdCont">
+                                            <label>Text</label>
+                                            <input aria-label="Text input" type="text">
+                                        </md-input-container>
+                                   </div>
+                                </div>
+                                <!-- Input control icons-->
+                                <div layout="row" layout-align="start center" class="admin-inputctrl">
+                                    <span style="margin-right: 5px;">Options:</span>
+                                    <!-- Edit input -->
+                                    <i class="fa fa-pencil fa-lg" aria-hidden="true"
+                                       title="Modify input"
+                                       style="cursor: pointer; margin-right: 5px;"
+                                       ng-click="editInput($event, section.index, $index)">
+                                    </i>
+                                    <!-- Remove input -->
+                                    <i class="fa fa-minus-circle fa-lg" aria-hidden="true"
+                                       title="Remove input"
+                                       style="cursor: pointer; margin-right: 2mm;"
+                                       ng-click="removeInput(section.index, $index)">
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add input button -->
+                    <button class="btn-dark btn-add-input" ng-click="addInput(section.index)"
+                            title="Add input to section: {{section.index + 1}}"><i class="fa fa-lg fa-plus-circle"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add section button -->
+    <button class="btn-dark btn-add-section" ng-click="addSection()">Add section</button>
+</form>
+
+<br/>
+
+<div class="btn-group btn-group-justified">
+    <!-- Save form button -->
+    <div class="btn-group">
+        <button ladda="laddaSave" data-style="expand-right" class="btn btn-primary" ng-disabled="sections == undefined || sections.length  < 1" ng-click="saveAdminFormToDb()">Save form</button>
+    </div>
+    <!-- Edit form button, only available if form was loaded -->
+    <div class="btn-group">
+        <button ladda="laddaUpdate" data-style="expand-right" class="btn btn-primary" ng-disabled="formInfo.id==null" ng-click="updateForm()">Update form</button>
+    </div>
+    <!-- Delete form button, only available if form was loaded -->
+    <div class="btn-group">
+        <button ladda="laddaDelete" data-style="expand-right" class="btn btn-primary" ng-disabled="formInfo.id==null" ng-click="deleteForm(formInfo.id)">Delete form</button>
+    </div>
+</div>
+<br />
+<div ng-show="alertMessageShow" class="success-msg" flex>{{alertMessage}}</div>

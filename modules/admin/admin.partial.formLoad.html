@@ -1,0 +1,54 @@
+<div flex>
+    <md-input-container style="width:100%; margin-top: 10mm">
+        <label><h3>Search in all forms:</h3></label>
+        <input type="text" ng-model="form.search" style="width:100%">
+    </md-input-container>
+</div>
+<table class="table-bordered table forms-table" ng-cloak>
+    <thead class="bg-primary">
+    <tr>
+        <th class="col-sm-2">Name</th>
+        <th class="col-sm-3">Description</th>
+        <th class="col-sm-2">Created/Updated</th>
+        <th class="col-sm-2">Available from</th>
+        <th class="col-sm-2">Available to</th>
+        <th class="col-sm-1">Load</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="form in viewForms track by $index ">
+
+        <td title="{{form.formName}}">
+            {{ form.formName | limitTo: 20 }}{{form.formName.length > 20 ? '...' : ''}}
+        </td>
+        <td title="{{form.formText}}">
+            {{ form.formText | limitTo: 20 }}{{form.formText.length > 20 ? '...' : ''}}
+        </td>
+        <td align="center">
+            {{form.stamp.date | dateToISO | date : 'yyyy-MM-dd'}}<br/>
+            {{form.stamp.date | dateToISO | date : 'H:mm'}}
+        </td>
+        <td align="center">
+            {{form.availableFrom.date | dateToISO | date : 'yyyy-MM-dd'}}<br/>
+            {{form.availableFrom.date | dateToISO | date : 'H:mm'}}
+        </td>
+        <td align="center">
+            {{form.availableTo.date | dateToISO | date : 'yyyy-MM-dd'}}<br/>
+            {{form.availableTo.date | dateToISO | date : 'H:mm'}}
+        </td>
+        <td>
+            <md-button ng-click="loadForm(form.id)" class="md-primary md-raised"> LOAD</md-button>
+        </td>
+    </tr>
+</table>
+<div class="paginator">
+    <ul uib-pagination
+        total-items="totalItems"
+        num-pages="numPages"
+        max-size="maxSize"
+        items-per-page="numPerPage"
+        boundary-links="true"
+        ng-model="currentPage"
+        ng-change="setPage(currentPage)">
+    </ul>
+</div>

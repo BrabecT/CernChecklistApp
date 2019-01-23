@@ -1,0 +1,13 @@
+<div class="top_nav" style="margin: 0; min-width: 380px;" ng-cloak>
+    <div class="nav_menu" style="text-align: center">
+        <nav class="row">
+            <md-content class="subPage-nav">
+                <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                    <md-nav-item md-nav-sref="admin.formCreate" name="navItemCreate">Form create</md-nav-item>
+                    <md-nav-item md-nav-sref="admin.versions" name="navItemVersions" ng-click="loadVersions()">Form versions</md-nav-item>
+                </md-nav-bar>
+            </md-content>
+        </nav>
+    </div>
+</div>
+<div ui-view ng-cloak></div>

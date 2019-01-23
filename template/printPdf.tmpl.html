@@ -1,0 +1,56 @@
+<md-dialog style="width: 70%; min-width: 300px">
+    <form name="form" ng-submit="save(data)" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span flex>PDF PROPERTIES</span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout="row" style="width: 100%">
+                    <md-input-container style="margin-right: 10px; width: 100%;">
+                        <label>Shift type:</label><br /><br />
+                        <md-radio-group ng-model="data.shiftType" layout="row">
+                            <div ng-repeat='shift in shifts'>
+                                <div layout="row" class="printPdf-radio">
+                                    {{shift.label}}<br /><br />
+                                    <md-radio-button flex
+                                                     ng-value="shift.type"
+                                                     class="md-primary"
+                                                     aria-label="Shift type radio button"
+                                    >
+                                    </md-radio-button>
+                                </div>
+                            </div>
+                        </md-radio-group>
+                    </md-input-container>
+                </div>
+                <br />
+                <div layout="column" layout-gt-xs="row">
+                    <div class="printPdf-shiftleader">
+                        <md-input-container style="width: 100%;">
+                            <label>Performed by:</label>
+                            <input aria-label="Performed by" name="shiftleader" ng-model="data.shiftleader" required>
+                            <div ng-messages="form.shiftleader.$error">
+                                <div ng-message></div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="printPdf-date">
+                        <md-input-container style="width: 100%;">
+                            <div flex-gt-xs>
+                                <md-datepicker ng-model="data.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-raised md-primary" type="submit"> Save </md-button>
+            <md-button class="md-raised md-warn" ng-click="cancel()" class="md-primary"> Cancel </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

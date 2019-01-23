@@ -1,0 +1,63 @@
+<md-dialog style="width: 70%;">
+    <form ng-cloak name="form">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span flex>INPUT</span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1 class="md-title">Input properties:</h1>
+                <div layout="row" style="width: 100%">
+                    <md-input-container style="margin-right: 10px; width: 100%;">
+                        <label>Label: </label>
+                        <textarea ng-model="data.newInputLabel" ng-value="inputLabelFill" md-autofocus></textarea>
+                    </md-input-container>
+                </div>
+
+                <div layout="column" layout-gt-xs="row" style="width: 100%">
+                    <md-input-container style="width: 20%; min-width: 120px;">
+                        <label style="color: black !important;">Input type:</label>
+                        <md-select ng-model="data.newInputType"
+                                   name="select"
+                                   class="selectPokus"
+                                   ng-init="data.newInputType = inputTypeFill"
+                                   required="required">
+                            <md-option ng-value="opt.type" ng-repeat="opt in selectOptions">{{opt.value}}</md-option>
+                        </md-select>
+                        <div ng-messages="form.select.$error">
+                            <div ng-message></div>
+                        </div>
+                    </md-input-container>
+
+                    <div layout="column" layout-gt-xs="row" style="width: 100%;" layout-align="center end">
+                        <md-input-container ng-show="data.newInputType == 'number'" style="min-width: 100px;">
+                            <label>Value from: </label>
+                            <input type="number" ng-model="data.newMinValue" ng-value="inputMinValueFill">
+                        </md-input-container>
+                        <md-input-container ng-show="data.newInputType == 'number'" style="min-width: 100px;">
+                            <label>To: </label>
+                            <input type="number" ng-model="data.newMaxValue" name="maxValue" ng-min="data.newMinValue" ng-value="inputMaxValueFill">
+                            <div  ng-messages="form.maxValue.$error">
+                                <div ng-message></div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div layout="row" style="width: 100%">
+                    <md-input-container style="margin-right: 10px; width: 100%;">
+                        <label>Input text: </label>
+                        <textarea ng-model="data.newInputText" ng-value="inputTextFill"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="save(data)" class="md-primary md-raised" ng-disabled="form.$invalid"> Save</md-button>
+            <md-button ng-click="cancel()" class="md-warn md-raised"> Cancel</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

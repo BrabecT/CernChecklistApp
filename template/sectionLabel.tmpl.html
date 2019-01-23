@@ -1,0 +1,26 @@
+<md-dialog style="width: 70%;">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span flex>SECTION</span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1 class="md-title">Section label:</h1>
+                <div layout="row" style="width: 100%">
+                    <md-input-container style="margin-right: 10px; width: 100%;">
+                        <label>Label: </label>
+                        <textarea ng-model="data.newSectionLabel" ng-value="labelFill" md-autofocus></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="save(data)" class="md-primary md-raised"> Save </md-button>
+            <md-button ng-click="cancel()" class="md-warn md-raised"> Cancel </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

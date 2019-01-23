@@ -1,0 +1,95 @@
+<div class="content-user" ng-cloak>
+    <br />
+    <div>
+        <form name="userForm" novalidate="novalidate" ng-submit="printPdf(sections, data)">
+            <div class="center">
+                <h1>COMPASS Checklist {{date | date: 'yyyy'}}</h1>
+                <h4>To be performed once per shift approximately four hours after the shift start.</h4>
+            </div>
+            <table class="table-bordered table user-form-tbl" id="export">
+                <thead>
+                <th class="bg-primary center" ng-cloak>
+                    <h2 ng-show="!noFormAlert"><strong>FORM</strong></h2>
+                    <h2 ng-show="noFormAlert"><strong>There is no available form for the current date.</strong></h2>
+                </th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="section in sections">
+                    <td>
+                        <div class="section-label">
+                            <strong>{{section.label}}</strong>
+                        </div>
+                        <div ng-repeat="input in section.inputs" class="user-section-content">
+                            <ng-form name="userInnerForm">
+                                <div ng-if="input.inputType != ''" ng-switch="input.inputType" class="user-input-container">
+                                    <div class="user-input-text">
+                                        <strong>{{input.inputLabel}}<span ng-if="input.inputLabel!=''">:</span></strong>&nbsp;&nbsp;{{input.inputText}}
+                                    </div>
+
+                                    <div layout="row" layout-align="start end" flex>
+                                        <div layout="column" layout-align="start center"
+                                              class="minmaxval" ng-show="input.inputType == 'number' && (input.minValue != null || input.maxValue != null)">
+                                            <div>Minimum: {{input.minValue}}<br />
+                                            Maximum: {{input.maxValue}}</div>
+                                         </div>
+
+                                        <div flex>
+                                            <div ng-switch-when="checkbox">
+                                                <md-input-container class="user-mdCont-checkbox">
+                                                    <md-checkbox
+                                                            aria-label="Checkbox"
+                                                            ng-model="data[input.id]"
+                                                            ng-change="autoStorageFunction()"
+                                                            ng-checked="checkboxChecked(data[input.id])"
+                                                    >
+                                                </md-input-container>
+                                            </div>
+
+                                            <div ng-switch-when="number">
+                                                <md-input-container class="user-mdCont">
+                                                        <label ng-class="{'number-error-label': numberError(input)}">
+                                                            Number</label>
+                                                        <input type="number"
+                                                               name="number"
+                                                               ng-blur="autoStorageFunction()"
+                                                               ng-model="data[input.id]"
+                                                               ng-class="{'number-error': numberError(input)}"
+                                                        >
+                                                        <div ng-messages="userForm.number.$error">
+                                                            <div ng-message></div>
+                                                        </div>
+                                                </md-input-container>
+                                            </div>
+
+                                            <div ng-switch-when="text">
+                                                <md-input-container class="user-mdCont-textarea">
+                                                    <label class="textarea-label">Text input</label>
+                                                    <textarea
+                                                            ng-model="data[input.id]"
+                                                            ng-blur="autoStorageFunction()"
+                                                            cols="5">
+                                                    </textarea>
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-show="!noFormAlert">
+                <div layout="row" layout-align="space-between center">
+                    <button ladda="laddaLoading" data-style="expand-right" type="submit" value="submit" class="btn btn-primary btn-mySubmit" ng-disabled="!online">Export to PDF</button>
+                    <button type="button" class="btn btn-primary btn-offlineLoad" title="Loads automatically saved form data." ng-click="getDataOffline()">Restore form</button>
+                </div>
+                <div ng-show="alertMessageShow" class="success-msg" flex>{{alertMessage}}</div>
+                <div class="center">
+                    <a class="btn btn-primary btn-getPdf" ng-if="pdfLink" href="{{ pdfLink }}" target="_blank">Get PDF</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

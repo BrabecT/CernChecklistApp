@@ -1,0 +1,56 @@
+<md-dialog style="width: 80%;">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span flex>FORM PROPERTIES</span>
+        </div>
+    </md-toolbar>
+    <form name="confirmForm" ng-cloak ng-submit="save(form)">
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1 class="md-title"></h1>
+                <div layout="row">
+                    <md-input-container style="width: 100%">
+                        <label>Form name:</label>
+                        <input aria-label="Name" name="name"ng-model="form.formName" style="width: 100%" md-autofocus required>
+                        <div ng-messages="confirmForm.name.$error">
+                            <div ng-message></div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container style="width: 100%">
+                        <label>Form description:</label>
+                        <textarea aria-label="Description" ng-model="form.formDescr" style="width: 100%"></textarea>
+                    </md-input-container>
+                </div>
+                <label class="datepicker-label">Available from:</label>
+                <div layout="column" layout-gt-xs="row">
+                    <div style="width:30%; min-width: 200px;  padding-top: 17px; margin-bottom: 15px;">
+                        <md-datepicker ng-model="form.dateFrom" md-placeholder="Enter date" md-open-on-focus style="width: 40mm;"></md-datepicker>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <input type="time" step="3600" ng-model="form.timeFrom" value="08:00" placeholder="Enter time" ng-disabled="form.dateFrom==null" style="width: 40mm;">
+                        </md-input-container>
+                    </div>
+                </div>
+                <label class="datepicker-label">Available to:</label>
+                <div layout="column" layout-gt-xs="row">
+                    <div style="width:30%; min-width: 200px; padding-top: 17px; margin-bottom: 15px;">
+                        <md-datepicker ng-model="form.dateTo" md-min-date="form.dateFrom" md-open-on-focus md-placeholder="Enter date" style="width: 40mm"></md-datepicker>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <input type="time" step="3600" ng-model="form.timeTo" placeholder="Enter time"  ng-disabled="form.dateTo==null" style="width: 40mm">
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-raised md-primary" type="submit" >Save </md-button>
+            <md-button ng-click="cancel()" class="md-raised md-warn"> Cancel </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

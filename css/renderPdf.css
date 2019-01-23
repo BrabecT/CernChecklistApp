@@ -1,0 +1,81 @@
+body {
+    font-size: 9pt;
+}
+
+.center {
+    text-align: center;
+}
+
+.headerInput {
+    height:10mm;
+    width: 100px;
+}
+
+.headerCheckbox {
+    font-size: 16pt;
+}
+
+.checkbox-info{
+    width: 100%;
+    text-align: right;
+}
+
+.table-bordered {
+    table-layout: fixed;
+    width: 100%;
+    border: 2px solid black;
+}
+
+.table-bordered tr td{
+    border: 2px solid black;
+    width: 100%;
+}
+
+.table-inner-bordered {
+    margin-top: 3mm;
+    table-layout: fixed;
+    border: none;
+    width: 100%;
+}
+
+
+
+.table-inner-bordered tr td {
+    border: solid black;
+    border-width: 1px 0 0 0;
+    width: 100%;
+}
+
+.checkbox {
+    font-size: 16pt;
+}
+
+.right-col-text {
+    text-align: left;
+}
+
+.right-col-text-error {
+    text-align: center;
+    color: red;
+}
+
+.right-col-number,
+.right-col-checkbox {
+    text-align: center;
+}
+
+.right-col-number-error {
+    text-align: center;
+    color: red;
+}
+
+span.section-label {
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+.input-value {
+    float: right;
+    position: absolute;
+    right: 0;
+}

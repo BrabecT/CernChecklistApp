@@ -1,0 +1,13 @@
+<md-dialog style="width: 50%; min-height: 200px;">
+    <form ng-cloak flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span flex>Confirm delete</span>
+            </div>
+        </md-toolbar>
+        <md-dialog-actions layout="row" layout-align="center center" flex>
+            <md-button ng-click="confirm = true; save(confirm)"  class="md-primary md-raised"> Delete </md-button>
+            <md-button ng-click="cancel()" class="md-warn md-raised"> Cancel </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

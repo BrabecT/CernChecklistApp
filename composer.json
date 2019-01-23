@@ -1,0 +1,9 @@
+{
+    "require": {
+        "mpdf/mpdf": "^6.1",
+        "twbs/bootstrap": "^3.3",
+        "components/jquery": "2.2.4",
+        "components/font-awesome": "^4.7",
+        "dibi/dibi": "2.3.5"
+    }
+}
